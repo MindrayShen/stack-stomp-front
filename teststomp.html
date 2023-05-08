@@ -11,8 +11,21 @@
 
 <body>
     <div id="app">
+        <el-input v-model="input" placeholder="请输入websocket链接"></el-input>
+        <div style="margin: 5px 0;"></div>
+        <el-input v-model="userName" placeholder="请输入userId"></el-input>
+        <div style="margin: 5px 0;"></div>
+        <el-input v-model="raceId" placeholder="请输入比赛ID"></el-input>
+        <div style="margin: 5px 0;"></div>
         <el-button type="primary" @click="handleConnect">连接</el-button>
-        <el-button type="primary" @click="handleSend">发送</el-button>
+        <div style="margin: 5px 0;"></div>
+        <el-input v-model="sendInput" placeholder="请输入发送的消息"></el-input>
+        <div style="margin: 5px 0;"></div>
+        <el-button type="primary" @click="handleSend">发送私信</el-button>
+        <el-button type="primary" @click="handleSendQueue">发送比赛参与者消息</el-button>
+        <div style="margin: 5px 0;"></div>
+        <el-input type="textarea" autosize placeholder="接收到的消息" v-model="textarea1"></el-input>
+        <div style="margin: 20px 0;"></div>
         <el-button type="primary" @click="handleDisconnect">断开</el-button>
     </div>
 
