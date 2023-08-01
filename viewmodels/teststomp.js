@@ -20,7 +20,7 @@ var app = new Vue({
             // this.stompclient = Stomp.over(this.socket);
             this.stompclient = Stomp.client(this.input);
             this.stompclient.connect({
-                // Authorization:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6ImY1N2ZmY2NiLWFlNmYtNDBjNi05OWQ2LWVkMjdiYjRiZDk1ZSJ9.ILT6dN-2AZu9wGX8Wjv5gqbLX-pDp18pL3PiHTnaZCn-o9VVxrD_szJhMIT0LPTt92hglBtp-pFFvNKTJ7cR2w",
+                Authorization:"Bearer eyJhbGciOiJIUzUxMiJ9.eyJsb2dpbl91c2VyX2tleSI6IjJkMDRiMjFiLTNlMDUtNDJiNy04YmQyLWViYTgzNGI1MzNmMiJ9.NklDD5tzjTV-DCxMs6g1Yw8smkUPk8CuUw-sLqIiUvbORShm5sp2Q12R_hOGeGmSOow7YbOaDvn1gwXE3u6wjQ",
                 name:this.userName,
             }, frame => {
                 console.log(frame);
@@ -31,6 +31,10 @@ var app = new Vue({
                 this.stompclient.subscribe('/myqueue/'+this.raceId, function (data) {
                     console.log(data)
                     app.publicSend(data.body)
+                });
+                this.stompclient.subscribe('/platform/'+this.raceId, function (data) {
+                    console.log(data)
+                    app.privateSend(data.body)
                 });
             });
 
